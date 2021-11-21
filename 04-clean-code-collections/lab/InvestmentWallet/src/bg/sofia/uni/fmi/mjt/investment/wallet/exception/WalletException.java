@@ -1,6 +1,6 @@
 package bg.sofia.uni.fmi.mjt.investment.wallet.exception;
 
-public class WalletException extends Exception {
+public class WalletException extends RuntimeException {
     public WalletException() {
         super();
     }

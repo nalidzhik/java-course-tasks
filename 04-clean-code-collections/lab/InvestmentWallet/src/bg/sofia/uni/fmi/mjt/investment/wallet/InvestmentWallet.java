@@ -162,16 +162,36 @@ public class InvestmentWallet implements Wallet {
 
     @Override
     public Asset getMostValuableAsset() {
-        return null;
+        double max = 0.0;
+        Asset mostValuableAsset = null;
+        for (Asset asset : this.assets.keySet()) {
+            double currentValuation = getValuation(asset);
+            if (max < currentValuation) {
+                max = currentValuation;
+                mostValuableAsset = asset;
+            }
+        }
+        return mostValuableAsset;
     }
 
     @Override
     public Collection<Acquisition> getAllAcquisitions() {
-        return this.acquisitions;
+        return List.copyOf(acquisitions);
     }
 
     @Override
     public Set<Acquisition> getLastNAcquisitions(int n) {
-        return null;
+        if (n < 0) {
+            throw new IllegalArgumentException("N cannot be negative");
+        }
+        if (n > acquisitions.size()) {
+            n = acquisitions.size();
+        }
+
+        Set<Acquisition> nAcquisitions = new HashSet<Acquisition>();
+        for (int i = acquisitions.size() - 1; n > 0; i--, n--) {
+            nAcquisitions.add(acquisitions.get(i));
+        }
+        return Set.copyOf(nAcquisitions);
     }
 }

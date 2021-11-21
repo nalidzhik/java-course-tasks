@@ -24,7 +24,7 @@ public class Stock implements Asset {
 
     @Override
     public AssetType getType() {
-        return AssetType.CRYPTO;
+        return AssetType.STOCK;
     }
 
     @Override

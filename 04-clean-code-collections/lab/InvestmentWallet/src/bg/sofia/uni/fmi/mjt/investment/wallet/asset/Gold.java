@@ -15,9 +15,9 @@ public class Gold implements Asset {
                 '}';
     }
 
-    public Gold(String id, String name){
-        this.id=id;
-        this.name=name;
+    public Gold(String id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     @Override
